@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ThermalPasteService } from './thermal-paste.service';
-import { ThermalPasteController } from './thermal-paste.controller';
+import { ThermalPasteService } from './service/thermal-paste.service';
+import { ThermalPasteController } from './controller/thermal-paste.controller';
 
 @Module({
   controllers: [ThermalPasteController],

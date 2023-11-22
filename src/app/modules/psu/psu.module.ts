@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { PsuService } from './psu.service';
-import { PsuController } from './psu.controller';
+import { PsuService } from './service/psu.service';
+import { PsuController } from './controller/psu.controller';
 
 @Module({
   controllers: [PsuController],

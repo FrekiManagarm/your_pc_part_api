@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { HddService } from './hdd.service';
-import { HddController } from './hdd.controller';
+import { HddService } from './service/hdd.service';
+import { HddController } from './controller/hdd.controller';
 
 @Module({
   controllers: [HddController],

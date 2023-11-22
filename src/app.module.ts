@@ -2,7 +2,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CpuModule } from './app/modules/cpu/cpu.module';
+import { CpuModule } from './app/modules/cpu/controller/cpu.module';
 import { GpuModule } from './app/modules/gpu/gpu.module';
 import { HddModule } from './app/modules/hdd/hdd.module';
 import { RamModule } from './app/modules/ram/ram.module';

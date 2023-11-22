@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { SsdService } from './ssd.service';
-import { SsdController } from './ssd.controller';
+import { SsdService } from './service/ssd.service';
+import { SsdController } from './controller/ssd.controller';
 
 @Module({
   controllers: [SsdController],

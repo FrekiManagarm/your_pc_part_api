@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { MotherboardService } from './motherboard.service';
-import { MotherboardController } from './motherboard.controller';
+import { MotherboardService } from './service/motherboard.service';
+import { MotherboardController } from './controller/motherboard.controller';
 
 @Module({
   controllers: [MotherboardController],

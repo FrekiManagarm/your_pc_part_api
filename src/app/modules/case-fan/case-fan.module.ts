@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { CaseFanService } from './case-fan.service';
-import { CaseFanController } from './case-fan.controller';
+import { CaseFanService } from './service/case-fan.service';
+import { CaseFanController } from './controller/case-fan.controller';
 
 @Module({
   controllers: [CaseFanController],

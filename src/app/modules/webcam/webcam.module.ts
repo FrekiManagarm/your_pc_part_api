@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { WebcamService } from './webcam.service';
-import { WebcamController } from './webcam.controller';
+import { WebcamService } from './service/webcam.service';
+import { WebcamController } from './controller/webcam.controller';
 
 @Module({
   controllers: [WebcamController],

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { HeadphonesService } from './headphones.service';
-import { HeadphonesController } from './headphones.controller';
+import { HeadphonesService } from './service/headphones.service';
+import { HeadphonesController } from './controller/headphones.controller';
 
 @Module({
   controllers: [HeadphonesController],

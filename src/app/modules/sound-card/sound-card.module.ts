@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { SoundCardService } from './sound-card.service';
-import { SoundCardController } from './sound-card.controller';
+import { SoundCardService } from './service/sound-card.service';
+import { SoundCardController } from './controller/sound-card.controller';
 
 @Module({
   controllers: [SoundCardController],

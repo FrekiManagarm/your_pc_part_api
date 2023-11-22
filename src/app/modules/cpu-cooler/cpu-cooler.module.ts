@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { CpuCoolerService } from './cpu-cooler.service';
-import { CpuCoolerController } from './cpu-cooler.controller';
+import { CpuCoolerService } from './service/cpu-cooler.service';
+import { CpuCoolerController } from './controller/cpu-cooler.controller';
 
 @Module({
   controllers: [CpuCoolerController],

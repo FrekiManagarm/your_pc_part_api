@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { RamService } from './ram.service';
-import { RamController } from './ram.controller';
+import { RamService } from './service/ram.service';
+import { RamController } from './controller/ram.controller';
 
 @Module({
   controllers: [RamController],

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { KeyboardService } from './keyboard.service';
-import { KeyboardController } from './keyboard.controller';
+import { KeyboardService } from './service/keyboard.service';
+import { KeyboardController } from './controller/keyboard.controller';
 
 @Module({
   controllers: [KeyboardController],
