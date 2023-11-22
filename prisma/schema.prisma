@@ -1,0 +1,265 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id  Int   @default(autoincrement()) @id
+  emailAddress    String @unique
+  name String?
+}
+
+model CPUCooler {
+  id  Int @default(autoincrement()) @id
+  rpm Int? @default(0)
+  noise_level Int? @default(0)
+  color String?
+  size Int?
+}
+
+model Motherboard {
+  id  Int @default(autoincrement()) @id
+  socket String[] @default([])
+  form_factor String
+  max_memory Int @default(0)
+  memory_slots Int @default(0)
+  color String?
+}
+
+model RAM {
+  id Int @default(autoincrement()) @id
+  speed Int[] @default([0, 0])
+  modules Int[] @default([])
+  price_per_gb Int @default(0)
+  color String?
+  first_word_latency String?
+  cas_latency String?
+}
+
+model CPU {
+  id Int @default(autoincrement()) @id
+  core_count Int @default(0)
+  threads_count Int @default(0)
+  core_clock Float @default(0.0)
+  boost_clock Float @default(0.0)
+  tdp Int? @default(0)
+  graphics Boolean? @default(false)
+  smt Boolean? @default(false)
+  setups Setup[]
+}
+
+model HDD {
+  id Int @default(autoincrement()) @id
+  capacity Int @default(0)
+  price_per_gb Int @default(0)
+  type String?
+  cache Int? @default(0)
+  form_factor String?
+  interface String?
+  setups Setup[]
+}
+
+model GPU {
+  id Int @default(autoincrement()) @id
+  chipset String?
+  memory Int? @default(0)
+  core_clock Int? @default(0)
+  boost_clock Int? @default(0)
+  color String?
+  length Int? @default(0)
+  setups Setup[]
+}
+
+model Case {
+  id Int @default(autoincrement()) @id
+  type CaseType @default(ATX)
+  color String?
+  included_PSU_W Int? @default(0)
+  side_panel String?
+  external_volume String?
+  internal_35_bays Int? @default(0)
+}
+
+model PSU {
+  id Int @id @default(autoincrement())
+  type PSUType @default(ATX)
+  efficiency PSUEff @default(bronze)
+  wattage Int? @default(0)
+  modular PSUModul @default(none)
+  color String?
+}
+
+enum PSUModul {
+  Full
+  Semi
+  none
+}
+
+enum PSUEff {
+  bronze
+  silver
+  gold
+  platinium
+  titanium
+}
+
+enum PSUType {
+  ATX
+  mATX
+  SFX
+}
+
+enum CaseType {
+  EATX
+  ATX
+  mATX
+  mITX
+}
+
+model Setup {
+  id Int @default(autoincrement()) @id
+  cpu CPU @relation(fields: [cpu_id], references: [id])
+  cpu_id Int
+  gpu GPU @relation(fields: [gpu_id], references: [id])
+  gpu_id Int
+  hdd HDD @relation(fields: [hdd_id], references: [id])
+  hdd_id Int
+}
+
+model Monitor {
+  id  Int @default(autoincrement()) @id
+  screen_size Int? @default(0) // inches
+  resolution Int[] @default([0, 0])
+  refresh_rate Int? @default(60)
+  response_time Int? @default(1)
+  panel_type MonitorPanelType @default(TN)
+  aspect_ratio String?
+}
+
+model SoundCard {
+  id Int @id @default(autoincrement())
+  channels String?
+  digital_audio String?
+  snr Int? @default(0)
+  sample_rate Int? @default(0)
+  chipset String?
+  interface String?
+}
+
+model Headphones {
+  id Int @id @default(autoincrement())
+  type HeadphoneTypes @default(Circumaural)
+  frequency_response Int[] @default([0, 0])
+  microphone Boolean? @default(false)
+  wireless Boolean? @default(false)
+  noise_cancellation Boolean? @default(false)
+  enclosure_type EnclosureType @default(Closed)
+  color String?
+}
+
+model Keyboard {
+  id Int @id @default(autoincrement())
+  style KeyboardStyle @default(Gaming)
+  switches String?
+  backlit String?
+  tenkeyless Boolean? @default(true)
+  connection_type ConnectionType @default(Wired)
+  color String?
+}
+
+model Mouse {
+  id Int @id @default(autoincrement())
+  tracking_method MouseTrackMethod @default(Laser)
+  connection_type ConnectionType @default(Wired)
+  max_dpi Int? @default(0)
+  hand_orientation MouseOrientation @default(Right)
+  color String?
+}
+
+model Speakers {
+  id Int @id @default(autoincrement())
+  configuration String?
+  wattage Int? @default(0)
+  frequency_response Int? @default(0)
+  color String?
+}
+
+model Webcam {
+  id Int @id @default(autoincrement())
+  resolutions String[] @default([]) 
+  connection ConnectionType @default(Wired)
+  focus_type FocusType @default(Auto)
+  os String[] @default([])
+  fov Int? @default(0)
+}
+
+model CaseFan {
+  id Int @id @default(autoincrement())
+  size Int @default(0)
+  color String?
+  rpm Int[] @default([0, 0])
+  airflow Int[] @default([0, 0])
+}
+
+model ThermalPaste {
+  id Int @id @default(autoincrement())
+  amount Int? @default(0) 
+}
+
+enum FocusType {
+  Auto
+  Manual
+  Fixed
+}
+
+enum MouseOrientation {
+  Right
+  Left
+  Both
+}
+
+enum MouseTrackMethod {
+  Optical
+  Laser
+}
+
+enum KeyboardStyle {
+  Gaming
+  Mini
+  Office
+}
+
+enum ConnectionType {
+  Wired
+  Wireless
+  Bluetooth
+  Both
+}
+
+enum HeadphoneTypes {
+  Circumaural
+  Supra_aural
+  Earbuds
+  Waterproof
+  DJ
+}
+
+enum EnclosureType {
+  Closed
+  Open
+}
+
+enum MonitorPanelType {
+  IPS
+  TN
+  VA
+  OLED
+}
+

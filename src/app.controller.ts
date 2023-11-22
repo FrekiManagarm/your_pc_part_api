@@ -6,7 +6,10 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  initApp(): {
+    app: { name: string; version: string; github: string; };
+    developers: { name: string; github: string; }[];
+  } {
+    return this.appService.initApp();
   }
 }
