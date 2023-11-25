@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateHddDto } from '../dto/create-hdd.dto';
 import { UpdateHddDto } from '../dto/update-hdd.dto';
+import { PrismaService } from 'src/service/prisma.service';
 
 @Injectable()
 export class HddService {
+  constructor(private prisma : PrismaService) {}
+
   create(createHddDto: CreateHddDto) {
     return 'This action adds a new hdd';
   }

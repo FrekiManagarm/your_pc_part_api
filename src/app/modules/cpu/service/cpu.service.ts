@@ -1,26 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCpuDto } from '../dto/create-cpu.dto';
 import { UpdateCpuDto } from '../dto/update-cpu.dto';
+import { PrismaService } from 'src/service/prisma.service';
 
 @Injectable()
 export class CpuService {
-  create(createCpuDto: CreateCpuDto) {
+  constructor(private prisma: PrismaService) {}
+
+  async create(createCpuDto: CreateCpuDto) {
     return 'This action adds a new cpu';
   }
 
-  findAll() {
+  async findAll() {
     return `This action returns all cpu`;
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} cpu`;
   }
 
-  update(id: number, updateCpuDto: UpdateCpuDto) {
+  async update(id: number, updateCpuDto: UpdateCpuDto) {
     return `This action updates a #${id} cpu`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} cpu`;
   }
 }

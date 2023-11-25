@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMotherboardDto } from '../dto/create-motherboard.dto';
 import { UpdateMotherboardDto } from '../dto/update-motherboard.dto';
+import { PrismaService } from 'src/service/prisma.service';
 
 @Injectable()
 export class MotherboardService {
+  constructor(private prisma : PrismaService) {}
+  
   create(createMotherboardDto: CreateMotherboardDto) {
     return 'This action adds a new motherboard';
   }

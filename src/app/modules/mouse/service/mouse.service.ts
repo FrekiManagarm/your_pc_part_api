@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMouseDto } from '../dto/create-mouse.dto';
 import { UpdateMouseDto } from '../dto/update-mouse.dto';
+import { PrismaService } from 'src/service/prisma.service';
 
 @Injectable()
 export class MouseService {
+  constructor(private prisma : PrismaService) {}
+  
   create(createMouseDto: CreateMouseDto) {
     return 'This action adds a new mouse';
   }

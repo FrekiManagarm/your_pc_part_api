@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePsuDto } from '../dto/create-psu.dto';
 import { UpdatePsuDto } from '../dto/update-psu.dto';
+import { PrismaService } from 'src/service/prisma.service';
 
 @Injectable()
 export class PsuService {
+  constructor(private prisma : PrismaService) {}
+  
   create(createPsuDto: CreatePsuDto) {
     return 'This action adds a new psu';
   }

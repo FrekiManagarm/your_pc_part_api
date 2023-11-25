@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateSpeakerDto } from '../dto/create-speaker.dto';
 import { UpdateSpeakerDto } from '../dto/update-speaker.dto';
+import { PrismaService } from 'src/service/prisma.service';
 
 @Injectable()
 export class SpeakersService {
+  constructor(private prisma : PrismaService) {}
+  
   create(createSpeakerDto: CreateSpeakerDto) {
     return 'This action adds a new speaker';
   }

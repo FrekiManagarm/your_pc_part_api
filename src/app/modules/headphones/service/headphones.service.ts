@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateHeadphoneDto } from '../dto/create-headphone.dto';
 import { UpdateHeadphoneDto } from '../dto/update-headphone.dto';
+import { PrismaService } from 'src/service/prisma.service';
 
 @Injectable()
 export class HeadphonesService {
+  constructor(private prisma : PrismaService) {}
+
   create(createHeadphoneDto: CreateHeadphoneDto) {
     return 'This action adds a new headphone';
   }

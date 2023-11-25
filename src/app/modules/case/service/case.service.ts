@@ -1,20 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCaseDto } from '../dto/create-case.dto';
 import { UpdateCaseDto } from '../dto/update-case.dto';
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from 'src/service/prisma.service';
+import { Case, CaseType, Prisma } from '@prisma/client';
 
 @Injectable()
 export class CaseService {
-  constructor(private prisma: PrismaService) {
+  constructor(private prisma: PrismaService) {}
 
+  async create(createCaseDto: CreateCaseDto) : Promise<Case> {
+    const response : Case = await this.prisma.case.create(createCaseDto);
+
+    return response
   }
 
-  create(createCaseDto: CreateCaseDto) {
-    return 'This action adds a new case';
-  }
+  async findAll(params: {
+    where?: Prisma.CaseWhereInput,
+  }) : Promise<Case[]> {
+    const { where } = params;
+    const response = await this.prisma.case.findMany({
+      where,
+    })
 
-  findAll() {
-    return `This action returns all case`;
+    return response;
   }
 
   findOne(id: number) {

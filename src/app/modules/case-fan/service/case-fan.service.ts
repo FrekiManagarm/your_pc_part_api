@@ -1,26 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCaseFanDto } from '../dto/create-case-fan.dto';
 import { UpdateCaseFanDto } from '../dto/update-case-fan.dto';
+import { PrismaService } from 'src/service/prisma.service';
 
 @Injectable()
 export class CaseFanService {
-  create(createCaseFanDto: CreateCaseFanDto) {
+  constructor(private prisma: PrismaService) {}
+
+  async create(createCaseFanDto: CreateCaseFanDto) {
     return 'This action adds a new caseFan';
   }
 
-  findAll() {
+  async findAll() {
     return `This action returns all caseFan`;
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} caseFan`;
   }
 
-  update(id: number, updateCaseFanDto: UpdateCaseFanDto) {
+  async update(id: number, updateCaseFanDto: UpdateCaseFanDto) {
     return `This action updates a #${id} caseFan`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} caseFan`;
   }
 }

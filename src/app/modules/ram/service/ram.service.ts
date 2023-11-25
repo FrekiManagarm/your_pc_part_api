@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRamDto } from '../dto/create-ram.dto';
 import { UpdateRamDto } from '../dto/update-ram.dto';
+import { PrismaService } from 'src/service/prisma.service';
 
 @Injectable()
 export class RamService {
+  constructor(private prisma : PrismaService) {}
+  
   create(createRamDto: CreateRamDto) {
     return 'This action adds a new ram';
   }
