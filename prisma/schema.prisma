@@ -72,6 +72,17 @@ model HDD {
   setups Setup[]
 }
 
+model SSD {
+  id Int @id @default(autoincrement())
+  capacity Int @default(0)
+  price_per_gb Int @default(0)
+  type String?
+  cache Int? @default(0)
+  form_factor String?
+  interface String?
+  setups SSDOfSetup[]
+}
+
 model GPU {
   id Int @default(autoincrement()) @id
   chipset String?
@@ -143,6 +154,7 @@ model Setup {
   ram RAM @relation(fields: [ram_id], references: [id])
   ram_id Int
   monitors MonitorsOfSetup[]
+  hdds SSDOfSetup[]
   sound_card SoundCard @relation(fields: [sound_card_id], references: [id])
   sound_card_id Int
   cpu_cooler CPUCooler @relation(fields: [cpu_cooler_id], references: [id])
@@ -163,6 +175,15 @@ model Setup {
   thermal_paste_id Int
   user User @relation(fields: [user_id], references: [id])
   user_id Int
+}
+
+model SSDOfSetup {
+  ssd SSD @relation(fields: [ssd_id], references: [id])
+  ssd_id Int
+  setup Setup @relation(fields: [setup_id], references: [id])
+  setup_id Int
+
+  @@id([ssd_id, setup_id])
 }
 
 model CaseFanOfSetup {
@@ -216,6 +237,8 @@ model SoundCard {
   interface String?
   setups Setup[]
 }
+
+
 
 model Headphones {
   id Int @id @default(autoincrement())

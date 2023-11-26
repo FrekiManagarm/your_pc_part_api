@@ -20,7 +20,7 @@ export class MotherboardService {
     take: number,
     skip: number,
     where: Prisma.MotherboardWhereInput,
-    orderBy: Prisma.MotherboardOrderByWithRelationInput
+    orderBy: Prisma.MotherboardOrderByWithAggregationInput
   }) {
     const { where, orderBy, take, skip } = params
     try {

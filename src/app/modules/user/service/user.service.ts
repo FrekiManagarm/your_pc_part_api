@@ -2,28 +2,76 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { PrismaService } from 'src/service/prisma.service';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class UserService {
   constructor(private prisma : PrismaService) {}
   
   async create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+    try {
+      const response = await this.prisma.user
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
-  async findAll() {
-    return `This action returns all user`;
+  async login() {
+
+  }
+
+  async register() {
+
+  }
+
+  async logOut() {
+
+  }
+
+  async findAll(params: {
+    skip: number,
+    take: number,
+    where: Prisma.UserWhereInput,
+    orderBy: Prisma.UserOrderByWithAggregationInput,
+  }) {
+    try {
+      const response = await this.prisma.user
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
   async findOne(id: number) {
-    return `This action returns a #${id} user`;
+    try {
+      const response = await this.prisma.user
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
   async update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+    try {
+      const response = await this.prisma.user
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
   async remove(id: number) {
-    return `This action removes a #${id} user`;
+    try {
+      const response = await this.prisma.user
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 }

@@ -2,28 +2,87 @@ import { Injectable } from '@nestjs/common';
 import { CreateMonitorDto } from '../dto/create-monitor.dto';
 import { UpdateMonitorDto } from '../dto/update-monitor.dto';
 import { PrismaService } from 'src/service/prisma.service';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class MonitorService {
   constructor(private prisma : PrismaService) {}
   
-  create(createMonitorDto: CreateMonitorDto) {
-    return 'This action adds a new monitor';
+  async create(createMonitorDto: CreateMonitorDto) {
+    try {
+      const response = await this.prisma.monitor.create({
+        data: createMonitorDto,
+      });
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
-  findAll() {
-    return `This action returns all monitor`;
+  async findAll(params: {
+    skip: number,
+    take: number,
+    where: Prisma.MonitorWhereInput,
+    orderBy: Prisma.MonitorOrderByWithAggregationInput,
+  }) {
+    const { skip, take, where, orderBy } = params
+    try {
+      const response = await this.prisma.monitor.findMany({
+        skip,
+        take,
+        where,
+        orderBy,
+      });
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} monitor`;
+  async findOne(id: number) {
+    try {
+      const response = await this.prisma.monitor.findUnique({
+        where: {
+          id,
+        }
+      });
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
-  update(id: number, updateMonitorDto: UpdateMonitorDto) {
-    return `This action updates a #${id} monitor`;
+  async update(id: number, updateMonitorDto: UpdateMonitorDto) {
+    try {
+      const response = await this.prisma.monitor.update({
+        data: updateMonitorDto,
+        where: {
+          id,
+        }
+      });
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} monitor`;
+  async remove(id: number) {
+    try {
+      const response = await this.prisma.monitor.delete({
+        where: {
+          id
+        }
+      });
+
+      if (!response) return false;
+
+      return true;
+    } catch (error) {
+      return error
+    }
   }
 }

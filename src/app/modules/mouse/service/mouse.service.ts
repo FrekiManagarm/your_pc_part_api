@@ -24,7 +24,7 @@ export class MouseService {
     skip: number,
     take: number,
     where: Prisma.MouseWhereInput,
-    orderBy: Prisma.MouseOrderByWithRelationInput,
+    orderBy: Prisma.MouseOrderByWithAggregationInput,
   }) {
     const { where, orderBy, skip, take } = params;
     try {

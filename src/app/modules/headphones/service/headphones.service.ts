@@ -2,28 +2,87 @@ import { Injectable } from '@nestjs/common';
 import { CreateHeadphoneDto } from '../dto/create-headphone.dto';
 import { UpdateHeadphoneDto } from '../dto/update-headphone.dto';
 import { PrismaService } from 'src/service/prisma.service';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class HeadphonesService {
   constructor(private prisma : PrismaService) {}
 
-  create(createHeadphoneDto: CreateHeadphoneDto) {
-    return 'This action adds a new headphone';
+  async create(createHeadphoneDto: CreateHeadphoneDto) {
+    try {
+      const response = await this.prisma.headphones.create({
+        data: createHeadphoneDto,
+      });
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
-  findAll() {
-    return `This action returns all headphones`;
+  async findAll(params: {
+    skip?: number,
+    take?: number,
+    where?: Prisma.HeadphonesWhereInput,
+    orderBy?: Prisma.HeadphonesOrderByWithAggregationInput,
+  }) {
+    const { skip, take, where, orderBy } = params;
+    try {
+      const response = await this.prisma.headphones.findMany({
+        skip,
+        take,
+        where,
+        orderBy
+      });
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} headphone`;
+  async findOne(id: number) {
+    try {
+      const response = await this.prisma.headphones.findUnique({
+        where: {
+          id,
+        }
+      });
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
-  update(id: number, updateHeadphoneDto: UpdateHeadphoneDto) {
-    return `This action updates a #${id} headphone`;
+  async update(id: number, updateHeadphoneDto: UpdateHeadphoneDto) {
+    try {
+      const response = await this.prisma.headphones.update({
+        where: {
+          id,
+        },
+        data: updateHeadphoneDto,
+      });
+
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} headphone`;
+  async remove(id: number) {
+    try {
+      const response = await this.prisma.headphones.delete({
+        where: {
+          id,
+        }
+      });
+
+      if (!response) return false;
+
+      return true;
+    } catch (error) {
+      return error
+    }
   }
 }

@@ -8,32 +8,81 @@ import { Case, CaseType, Prisma } from '@prisma/client';
 export class CaseService {
   constructor(private prisma: PrismaService) {}
 
-  async create(createCaseDto: CreateCaseDto) : Promise<Case> {
-    const response : Case = await this.prisma.case.create(createCaseDto);
+  async create(createCaseDto: CreateCaseDto) {
+    try {
+      const response = await this.prisma.case.create({
+        data: createCaseDto,
+      });
 
-    return response
+      return response
+    } catch (error) {
+      return error
+    }
   }
 
   async findAll(params: {
+    take?: number,
+    skip?: number,
     where?: Prisma.CaseWhereInput,
-  }) : Promise<Case[]> {
-    const { where } = params;
-    const response = await this.prisma.case.findMany({
-      where,
-    })
-
-    return response;
+    orderBy?: Prisma.CaseOrderByWithAggregationInput,
+  }) {
+    const { where, skip, take, orderBy } = params;
+    try {
+      const response = await this.prisma.case.findMany({
+        where,
+        skip,
+        take,
+        orderBy,
+      })
+  
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} case`;
+  async findOne(id: number) {
+    try {
+      const response = await this.prisma.case.findUnique({
+        where: {
+          id,
+        }
+      });
+
+      return response;
+    } catch (error) {
+      return error;
+    }
   }
 
-  update(id: number, updateCaseDto: UpdateCaseDto) {
-    return `This action updates a #${id} case`;
+  async update(id: number, updateCaseDto: UpdateCaseDto) {
+    try {
+      const response = await this.prisma.case.update({
+        where: {
+          id,
+        },
+        data: updateCaseDto,
+      });
+
+      return response
+    } catch (error) {
+      return error
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} case`;
+  async remove(id: number) {
+    try {
+      const response = await this.prisma.case.delete({
+        where: {
+          id,
+        },
+      });
+
+      if (!response) return false
+
+      return true;
+    } catch (error) {
+      return error;
+    }
   }
 }
