@@ -22,6 +22,7 @@ import { SpeakersModule } from './app/modules/speakers/speakers.module';
 import { HeadphonesModule } from './app/modules/headphones/headphones.module';
 import { ThermalPasteModule } from './app/modules/thermal-paste/thermal-paste.module';
 import { SoundCardModule } from './app/modules/sound-card/sound-card.module';
+import { SetupModule } from './app/modules/setup/setup.module';
 
 @Module({
   imports: [
@@ -44,7 +45,7 @@ import { SoundCardModule } from './app/modules/sound-card/sound-card.module';
     SpeakersModule, 
     HeadphonesModule, 
     ThermalPasteModule, 
-    SoundCardModule,
+    SoundCardModule, SetupModule,
   ],
   controllers: [AppController],
   providers: [AppService],

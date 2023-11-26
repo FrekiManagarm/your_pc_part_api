@@ -7,23 +7,23 @@ import { PrismaService } from 'src/service/prisma.service';
 export class SpeakersService {
   constructor(private prisma : PrismaService) {}
   
-  create(createSpeakerDto: CreateSpeakerDto) {
+  async create(createSpeakerDto: CreateSpeakerDto) {
     return 'This action adds a new speaker';
   }
 
-  findAll() {
+  async findAll() {
     return `This action returns all speakers`;
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} speaker`;
   }
 
-  update(id: number, updateSpeakerDto: UpdateSpeakerDto) {
+  async update(id: number, updateSpeakerDto: UpdateSpeakerDto) {
     return `This action updates a #${id} speaker`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} speaker`;
   }
 }

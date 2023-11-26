@@ -7,23 +7,23 @@ import { PrismaService } from 'src/service/prisma.service';
 export class ThermalPasteService {
   constructor(private prisma : PrismaService) {}
   
-  create(createThermalPasteDto: CreateThermalPasteDto) {
+  async create(createThermalPasteDto: CreateThermalPasteDto) {
     return 'This action adds a new thermalPaste';
   }
 
-  findAll() {
+  async findAll() {
     return `This action returns all thermalPaste`;
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} thermalPaste`;
   }
 
-  update(id: number, updateThermalPasteDto: UpdateThermalPasteDto) {
+  async update(id: number, updateThermalPasteDto: UpdateThermalPasteDto) {
     return `This action updates a #${id} thermalPaste`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} thermalPaste`;
   }
 }

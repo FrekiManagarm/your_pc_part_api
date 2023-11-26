@@ -7,23 +7,23 @@ import { PrismaService } from 'src/service/prisma.service';
 export class PsuService {
   constructor(private prisma : PrismaService) {}
   
-  create(createPsuDto: CreatePsuDto) {
+  async create(createPsuDto: CreatePsuDto) {
     return 'This action adds a new psu';
   }
 
-  findAll() {
+  async findAll() {
     return `This action returns all psu`;
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} psu`;
   }
 
-  update(id: number, updatePsuDto: UpdatePsuDto) {
+  async update(id: number, updatePsuDto: UpdatePsuDto) {
     return `This action updates a #${id} psu`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} psu`;
   }
 }

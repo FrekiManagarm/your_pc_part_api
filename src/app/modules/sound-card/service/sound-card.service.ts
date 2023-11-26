@@ -7,23 +7,23 @@ import { PrismaService } from 'src/service/prisma.service';
 export class SoundCardService {
   constructor(private prisma : PrismaService) {}
   
-  create(createSoundCardDto: CreateSoundCardDto) {
+  async create(createSoundCardDto: CreateSoundCardDto) {
     return 'This action adds a new soundCard';
   }
 
-  findAll() {
+  async findAll() {
     return `This action returns all soundCard`;
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} soundCard`;
   }
 
-  update(id: number, updateSoundCardDto: UpdateSoundCardDto) {
+  async update(id: number, updateSoundCardDto: UpdateSoundCardDto) {
     return `This action updates a #${id} soundCard`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} soundCard`;
   }
 }

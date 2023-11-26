@@ -7,23 +7,23 @@ import { PrismaService } from 'src/service/prisma.service';
 export class WebcamService {
   constructor(private prisma : PrismaService) {}
   
-  create(createWebcamDto: CreateWebcamDto) {
+  async create(createWebcamDto: CreateWebcamDto) {
     return 'This action adds a new webcam';
   }
 
-  findAll() {
+  async findAll() {
     return `This action returns all webcam`;
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} webcam`;
   }
 
-  update(id: number, updateWebcamDto: UpdateWebcamDto) {
+  async update(id: number, updateWebcamDto: UpdateWebcamDto) {
     return `This action updates a #${id} webcam`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} webcam`;
   }
 }

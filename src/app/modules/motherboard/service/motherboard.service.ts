@@ -2,28 +2,81 @@ import { Injectable } from '@nestjs/common';
 import { CreateMotherboardDto } from '../dto/create-motherboard.dto';
 import { UpdateMotherboardDto } from '../dto/update-motherboard.dto';
 import { PrismaService } from 'src/service/prisma.service';
+import { Motherboard, Prisma } from '@prisma/client';
 
 @Injectable()
 export class MotherboardService {
   constructor(private prisma : PrismaService) {}
   
-  create(createMotherboardDto: CreateMotherboardDto) {
-    return 'This action adds a new motherboard';
+  async create(createMotherboardDto: CreateMotherboardDto) : Promise<Motherboard> {
+    const response = await this.prisma.motherboard.create({
+      data: createMotherboardDto
+    });
+
+    return response;
   }
 
-  findAll() {
-    return `This action returns all motherboard`;
+  async findAll(params : {
+    take: number,
+    skip: number,
+    where: Prisma.MotherboardWhereInput,
+    orderBy: Prisma.MotherboardOrderByWithRelationInput
+  }) {
+    const { where, orderBy, take, skip } = params
+    try {
+      const response = await this.prisma.motherboard.findMany({
+        where,
+        orderBy,
+        take,
+        skip
+      });
+  
+      return response;
+    } catch (error) {
+      return error;
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} motherboard`;
+  async findOne(id: number) {
+    try {
+      const response : Motherboard = await this.prisma.motherboard.findUnique({
+        where: {
+          id,
+        }
+      });
+  
+      return response;
+    } catch (error) {
+      return error;
+    }
   }
 
-  update(id: number, updateMotherboardDto: UpdateMotherboardDto) {
-    return `This action updates a #${id} motherboard`;
+  async update(id: number, updateMotherboardDto: UpdateMotherboardDto) {
+    try {
+      const response = await this.prisma.motherboard.update({
+        where: {
+          id,
+        },
+        data: updateMotherboardDto,
+      });
+  
+      return response;
+    } catch (error) {
+      return error
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} motherboard`;
+  async remove(id: number) {
+    try {
+      const response = await this.prisma.motherboard.delete({
+        where: {
+          id
+        },
+      });
+  
+      return true;
+    } catch (error) {
+      return error;
+    }
   }
 }

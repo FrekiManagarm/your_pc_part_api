@@ -7,23 +7,23 @@ import { PrismaService } from 'src/service/prisma.service';
 export class SsdService {
   constructor(private prisma : PrismaService) {}
   
-  create(createSsdDto: CreateSsdDto) {
+  async create(createSsdDto: CreateSsdDto) {
     return 'This action adds a new ssd';
   }
 
-  findAll() {
+  async findAll() {
     return `This action returns all ssd`;
   }
 
-  findOne(id: number) {
+  async findOne(id: number) {
     return `This action returns a #${id} ssd`;
   }
 
-  update(id: number, updateSsdDto: UpdateSsdDto) {
+  async update(id: number, updateSsdDto: UpdateSsdDto) {
     return `This action updates a #${id} ssd`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} ssd`;
   }
 }
