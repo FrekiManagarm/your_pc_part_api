@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CpuController } from './controller/cpu.controller';
-import { CpuService } from './service/cpu.service';
+import { CpuController } from './cpu.controller';
+import { CpuService } from '../service/cpu.service';
 
 describe('CpuController', () => {
   let controller: CpuController;

@@ -16,7 +16,15 @@ model User {
   emailAddress    String @unique
   firstname String?
   lastname String?
+  avatarUrl String?
+  role UserRole? @default(CLIENT)
   setups Setup[]
+}
+
+enum UserRole {
+  ADMINISTRATOR
+  CLIENT
+  MODERATOR
 }
 
 model CPUCooler {

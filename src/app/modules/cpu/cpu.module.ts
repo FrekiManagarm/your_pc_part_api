@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { CpuService } from '../service/cpu.service';
-import { CpuController } from './cpu.controller';
+import { CpuService } from './service/cpu.service';
+import { CpuController } from './controller/cpu.controller';
 
 @Module({
   controllers: [CpuController],

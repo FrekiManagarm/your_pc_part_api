@@ -4,7 +4,7 @@ import { SetupController } from './controller/setup.controller';
 import { PsuModule } from '../psu/psu.module';
 import { RamModule } from '../ram/ram.module';
 import { GpuModule } from '../gpu/gpu.module';
-import { CpuModule } from '../cpu/controller/cpu.module';
+import { CpuModule } from '../cpu/cpu.module';
 import { SsdModule } from '../ssd/ssd.module';
 import { HddModule } from '../hdd/hdd.module';
 import { SpeakersModule } from '../speakers/speakers.module';
