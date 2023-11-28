@@ -21,10 +21,10 @@ export class CaseFanService {
   }
 
   async findAll(params: {
-    take: number,
-    skip: number,
-    where: Prisma.CaseFanWhereInput,
-    orderBy: Prisma.CaseFanOrderByWithAggregationInput
+    take?: number,
+    skip?: number,
+    where?: Prisma.CaseFanWhereInput,
+    orderBy?: Prisma.CaseFanOrderByWithAggregationInput
   }) {
     const { orderBy, skip, take, where } = params;
     try {
