@@ -21,10 +21,10 @@ export class CpuService {
   }
 
   async findAll(params: {
-    skip: number,
-    take: number,
-    where: Prisma.CPUWhereInput,
-    orderBy: Prisma.CPUOrderByWithAggregationInput,
+    skip?: number,
+    take?: number,
+    where?: Prisma.CPUWhereInput,
+    orderBy?: Prisma.CPUOrderByWithAggregationInput,
   }) {
     const { orderBy, skip, take, where } = params; 
     try {

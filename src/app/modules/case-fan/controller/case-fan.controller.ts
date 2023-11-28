@@ -39,12 +39,15 @@ export class CaseFanController {
     return this.caseFanService.findOne(+id);
   }
 
-  
+  @Roles(UserRole.ADMINISTRATOR, UserRole.MODERATOR)
+  @UseGuards(AccessTokenGuard, RolesGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCaseFanDto: UpdateCaseFanDto) {
     return this.caseFanService.update(+id, updateCaseFanDto);
   }
 
+  @Roles(UserRole.ADMINISTRATOR)
+  @UseGuards(AccessTokenGuard, RolesGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.caseFanService.remove(+id);
