@@ -21,10 +21,10 @@ export class RamService {
   }
 
   async findAll(params: {
-    take: number,
-    skip: number,
-    where: Prisma.RAMWhereInput,
-    orderBy: Prisma.RAMOrderByWithAggregationInput,
+    take?: number,
+    skip?: number,
+    where?: Prisma.RAMWhereInput,
+    orderBy?: Prisma.RAMOrderByWithAggregationInput,
   }) {
     const { take, skip, where, orderBy } = params
     try {

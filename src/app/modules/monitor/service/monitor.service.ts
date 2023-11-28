@@ -21,10 +21,10 @@ export class MonitorService {
   }
 
   async findAll(params: {
-    skip: number,
-    take: number,
-    where: Prisma.MonitorWhereInput,
-    orderBy: Prisma.MonitorOrderByWithAggregationInput,
+    skip?: number,
+    take?: number,
+    where?: Prisma.MonitorWhereInput,
+    orderBy?: Prisma.MonitorOrderByWithAggregationInput,
   }) {
     const { skip, take, where, orderBy } = params
     try {

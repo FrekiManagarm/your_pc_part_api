@@ -21,10 +21,10 @@ export class PsuService {
   }
 
   async findAll(params: {
-    skip: number,
-    take: number,
-    where: Prisma.PSUWhereInput,
-    orderBy: Prisma.PSUOrderByWithAggregationInput,
+    skip?: number,
+    take?: number,
+    where?: Prisma.PSUWhereInput,
+    orderBy?: Prisma.PSUOrderByWithAggregationInput,
   }) {
     const { orderBy, skip, take, where } = params;
     try {

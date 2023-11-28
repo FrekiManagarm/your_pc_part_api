@@ -21,10 +21,10 @@ export class SpeakersService {
   }
 
   async findAll(params: {
-    skip: number,
-    take: number,
-    where: Prisma.SpeakersWhereInput,
-    orderBy: Prisma.SpeakersOrderByWithAggregationInput,
+    skip?: number,
+    take?: number,
+    where?: Prisma.SpeakersWhereInput,
+    orderBy?: Prisma.SpeakersOrderByWithAggregationInput,
   }) {
     const { skip, take, where, orderBy } = params;
     try {

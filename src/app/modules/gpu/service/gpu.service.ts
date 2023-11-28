@@ -21,10 +21,10 @@ export class GpuService {
   }
 
   async findAll(params: {
-    skip: number,
-    take: number,
-    where: Prisma.GPUWhereInput,
-    orderBy: Prisma.GPUOrderByWithAggregationInput,
+    skip?: number,
+    take?: number,
+    where?: Prisma.GPUWhereInput,
+    orderBy?: Prisma.GPUOrderByWithAggregationInput,
   }) {
     const { skip, take, where, orderBy } = params;
     try {

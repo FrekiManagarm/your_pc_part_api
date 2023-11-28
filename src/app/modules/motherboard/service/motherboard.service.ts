@@ -17,10 +17,10 @@ export class MotherboardService {
   }
 
   async findAll(params : {
-    take: number,
-    skip: number,
-    where: Prisma.MotherboardWhereInput,
-    orderBy: Prisma.MotherboardOrderByWithAggregationInput
+    take?: number,
+    skip?: number,
+    where?: Prisma.MotherboardWhereInput,
+    orderBy?: Prisma.MotherboardOrderByWithAggregationInput
   }) {
     const { where, orderBy, take, skip } = params
     try {

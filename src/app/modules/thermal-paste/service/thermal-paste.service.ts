@@ -19,10 +19,10 @@ export class ThermalPasteService {
   }
 
   async findAll(params: {
-    skip: number,
-    take: number,
-    where: Prisma.ThermalPasteWhereInput,
-    orderBy: Prisma.ThermalPasteOrderByWithAggregationInput,
+    skip?: number,
+    take?: number,
+    where?: Prisma.ThermalPasteWhereInput,
+    orderBy?: Prisma.ThermalPasteOrderByWithAggregationInput,
   }) {
     try {
       const response = await this.prisma.thermalPaste

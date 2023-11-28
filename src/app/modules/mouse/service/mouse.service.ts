@@ -21,10 +21,10 @@ export class MouseService {
   }
 
   async findAll(params : {
-    skip: number,
-    take: number,
-    where: Prisma.MouseWhereInput,
-    orderBy: Prisma.MouseOrderByWithAggregationInput,
+    skip?: number,
+    take?: number,
+    where?: Prisma.MouseWhereInput,
+    orderBy?: Prisma.MouseOrderByWithAggregationInput,
   }) {
     const { where, orderBy, skip, take } = params;
     try {

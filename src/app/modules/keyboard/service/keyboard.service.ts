@@ -21,10 +21,10 @@ export class KeyboardService {
   }
 
   async findAll(params: {
-    skip: number,
-    take: number,
-    where: Prisma.KeyboardWhereInput,
-    orderBy: Prisma.KeyboardOrderByWithAggregationInput,
+    skip?: number,
+    take?: number,
+    where?: Prisma.KeyboardWhereInput,
+    orderBy?: Prisma.KeyboardOrderByWithAggregationInput,
   }) {
     const { skip, take, where, orderBy } = params;
     try {

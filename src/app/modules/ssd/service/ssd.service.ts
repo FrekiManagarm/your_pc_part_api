@@ -21,10 +21,10 @@ export class SsdService {
   }
 
   async findAll(params: {
-    skip: number,
-    take: number,
-    where: Prisma.SSDWhereInput,
-    orderBy: Prisma.SSDOrderByWithAggregationInput,
+    skip?: number,
+    take?: number,
+    where?: Prisma.SSDWhereInput,
+    orderBy?: Prisma.SSDOrderByWithAggregationInput,
   }) {
 
     const { skip, take, where, orderBy } = params;

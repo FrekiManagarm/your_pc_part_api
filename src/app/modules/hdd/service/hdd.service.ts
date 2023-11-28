@@ -21,10 +21,10 @@ export class HddService {
   }
 
   async findAll(params: {
-    skip: number,
-    take: number,
-    where: Prisma.HDDWhereInput,
-    orderBy: Prisma.HDDOrderByWithAggregationInput,
+    skip?: number,
+    take?: number,
+    where?: Prisma.HDDWhereInput,
+    orderBy?: Prisma.HDDOrderByWithAggregationInput,
   }) {
     const { skip, take, where, orderBy } = params
     try {

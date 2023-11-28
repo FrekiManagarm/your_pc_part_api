@@ -35,16 +35,22 @@ export class CpuCoolerController {
     });
   }
 
+  @UseGuards(AccessTokenGuard, RolesGuard)
+  @Roles(UserRole.ADMINISTRATOR, UserRole.CLIENT, UserRole.MODERATOR)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.cpuCoolerService.findOne(+id);
   }
 
+  @UseGuards(AccessTokenGuard, RolesGuard)
+  @Roles(UserRole.ADMINISTRATOR, UserRole.MODERATOR)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCpuCoolerDto: UpdateCpuCoolerDto) {
     return this.cpuCoolerService.update(+id, updateCpuCoolerDto);
   }
 
+  @UseGuards(AccessTokenGuard, RolesGuard)
+  @Roles(UserRole.ADMINISTRATOR, UserRole.MODERATOR)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.cpuCoolerService.remove(+id);

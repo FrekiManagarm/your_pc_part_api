@@ -21,10 +21,10 @@ export class SoundCardService {
   }
 
   async findAll(params: {
-    skip: number,
-    take: number,
-    where: Prisma.SoundCardWhereInput,
-    orderBy: Prisma.SoundCardOrderByWithAggregationInput,
+    skip?: number,
+    take?: number,
+    where?: Prisma.SoundCardWhereInput,
+    orderBy?: Prisma.SoundCardOrderByWithAggregationInput,
   }) {
     const { orderBy, skip, take, where } = params;
     try {
