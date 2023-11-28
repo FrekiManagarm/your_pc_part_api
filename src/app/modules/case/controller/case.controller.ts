@@ -18,6 +18,7 @@ export class CaseController {
     return this.caseService.create(createCaseDto);
   }
 
+  @UseGuards(AccessTokenGuard, RolesGuard)
   @Roles(UserRole.ADMINISTRATOR, UserRole.CLIENT, UserRole.MODERATOR)
   @UseGuards(AccessTokenGuard, RolesGuard)
   @Get()
@@ -30,6 +31,7 @@ export class CaseController {
     });
   }
 
+  @UseGuards(AccessTokenGuard, RolesGuard)
   @Roles(UserRole.CLIENT, UserRole.ADMINISTRATOR)
   @UseGuards(AccessTokenGuard, RolesGuard)
   @Get(':id')
@@ -37,6 +39,7 @@ export class CaseController {
     return this.caseService.findOne(+id);
   }
 
+  @UseGuards(AccessTokenGuard, RolesGuard)
   @Roles(UserRole.MODERATOR, UserRole.ADMINISTRATOR)
   @UseGuards(AccessTokenGuard, RolesGuard)
   @Put(':id')
@@ -44,6 +47,7 @@ export class CaseController {
     return this.caseService.update(+id, updateCaseDto);
   }
 
+  @UseGuards(AccessTokenGuard, RolesGuard)
   @Roles(UserRole.ADMINISTRATOR, UserRole.MODERATOR)
   @UseGuards(AccessTokenGuard, RolesGuard)
   @Delete(':id')
