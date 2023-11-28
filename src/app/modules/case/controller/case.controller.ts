@@ -19,7 +19,7 @@ export class CaseController {
     return this.caseService.create(createCaseDto);
   }
 
-  @UseGuards(AccessTokenGuard)
+  @UseGuards(AccessTokenGuard, RolesGuard)
   @Roles(UserRole.ADMINISTRATOR, UserRole.CLIENT, UserRole.MODERATOR)
   @Get()
   findAll(@Query('color') color: string, @Query('type') type: $Enums.CaseType) {
@@ -31,20 +31,21 @@ export class CaseController {
     });
   }
 
-  @UseGuards(AccessTokenGuard)
+  @UseGuards(AccessTokenGuard, RolesGuard)
   @Roles(UserRole.CLIENT, UserRole.ADMINISTRATOR)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.caseService.findOne(+id);
   }
 
-  @UseGuards(AccessTokenGuard)
+  @UseGuards(AccessTokenGuard, RolesGuard)
   @Roles(UserRole.MODERATOR, UserRole.ADMINISTRATOR)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCaseDto: UpdateCaseDto) {
     return this.caseService.update(+id, updateCaseDto);
   }
 
+  @UseGuards(AccessTokenGuard, RolesGuard)
   @Roles(UserRole.ADMINISTRATOR, UserRole.MODERATOR)
   @Delete(':id')
   remove(@Param('id') id: string) {
